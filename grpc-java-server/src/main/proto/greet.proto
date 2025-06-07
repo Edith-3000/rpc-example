@@ -3,7 +3,17 @@ syntax = "proto3";
 package greet;
 
 service Greeter {
+  // Unary
   rpc SayHello (HelloRequest) returns (HelloReply);
+
+  // Server streaming
+  rpc GreetManyTimes (HelloRequest) returns (stream HelloReply);
+
+  // Client streaming
+  rpc LongGreet (stream HelloRequest) returns (HelloReply);
+
+  // Bidirectional streaming
+  rpc GreetEveryone (stream HelloRequest) returns (stream HelloReply);
 }
 
 message HelloRequest {
